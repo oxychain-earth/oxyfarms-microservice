@@ -1,0 +1,29 @@
+{
+  "name": "oxyfarms-microservice",
+  "description": "OxyFarms microservice",
+  "repository": "https://github.com/oxychain-earth/oxyfarms-microservice",
+  "logo": "https://https://oxyfarms.earth/oxyfarms-logo.png",
+  "keywords": [
+    "nft",
+    "crypto",
+    "oxyfarms",
+    "erc721",
+    "sustainability",
+    "greentech"
+  ],
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Leon Acosta <leon@oxychain.earth>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4"
+  },
+  "engines": {
+    "node": "8.11.2"
+  }
+}

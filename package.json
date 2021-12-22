@@ -14,7 +14,8 @@
   "version": "0.1.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "netlify-lambda build express"
   },
   "author": "Leon Acosta <leon@oxychain.earth>",
   "license": "MIT",
@@ -22,6 +23,9 @@
     "dotenv": "^10.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "netlify-lambda": "^1.6.3"
   },
   "engines": {
     "node": "8.11.2"

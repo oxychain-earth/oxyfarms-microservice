@@ -32,7 +32,8 @@ app.get('/token/:token_id', function(req, res) {
 
   const data = {
     'name': "NFTree #" + token_id.padStart(4, "0"),
-    'description': `>"OxyFarms is creating a global decentralized forest by developing afforestation and reforestation projects around the world with a digital representation in the oxyverse. This is our very first venture, our first OxyFarm: "Genesis"."
+    'description': `>OxyFarms is creating a global decentralized forest by developing afforestation and reforestation projects around the world with a digital representation in the oxyverse. This is our very first venture, our first OxyFarm: "Genesis".
+    
 		**OxyFarms is a venture of Oxychain.**
 		
 		>This token represents the seed contribution to Oxychain ecosystem. Every 4 NFTrees minted, 1 real tree will be planted.

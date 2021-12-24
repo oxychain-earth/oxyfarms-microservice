@@ -1,10 +1,15 @@
 require('dotenv').config()
 
 const express = require('express');
+const MetaAuth = require("meta-auth");
 
 const PORT = process.env.PORT || 7000
 
-const app = express().set('port', PORT)
+const app = express().set('port', PORT);
+
+const metaAuth = new MetaAuth({
+  banner: process.env.META_BANNER,
+});
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');

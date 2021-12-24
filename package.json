@@ -22,7 +22,8 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "ejs": "^2.6.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "meta-auth": "^1.1.2"
   },
   "devDependencies": {
     "netlify-lambda": "^1.6.3"

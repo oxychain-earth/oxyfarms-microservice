@@ -72,14 +72,14 @@ app.get("/auth/:MetaAddress", metaAuth, (req, res) => {
  */
 app.get("/auth/:MetaMessage/:MetaSignature", metaAuth, (req, res) => {
   if (req.metaAuth.recovered) {
+    const userWhitelistPath = `${process.env.WHITELIST_PATH}${req.metaAuth.recovered}`;
+
     const data = {
       whitelisted: true
     };
-    fs.writeFile(
-        `${process.env.WHITELIST_PATH}${req.metaAuth.recovered}`,
-        JSON.stringify(data),
-        (err) => {}
-    );
+    if (!fs.existsSync(userWhitelistPath)) {
+      fs.writeFile(userWhitelistPath, JSON.stringify(data), (err) => {});
+    }
     res.send(data);
   } else {
     res.status(500).send();

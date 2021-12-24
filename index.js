@@ -48,6 +48,39 @@ app.get('/token/:token_id', function(req, res) {
   res.send(data)
 });
 
+/**
+ * @Auth::GetChallenge
+ * This method check if the address that wants to log as an OG holder
+ * - If yes: returns a challenge to be signed
+ * - If no: returns fail
+ */
+app.get("/auth/:MetaAddress", metaAuth, (req, res) => {
+  res.send(req.metaAuth.challenge);
+});
+
+/**
+ * @Auth::Authenticate
+ * Based on the challenge, the {see @Auth::GetChallenge}, this method verifies
+ * if the user signed the message with the right private key.
+ * - If yes, it will return an authentication token + the user profile
+ * - If no, it will fail
+ */
+app.get("/auth/:MetaMessage/:MetaSignature", metaAuth, (req, res) => {
+  if (req.metaAuth.recovered) {
+    const data = {
+      whitelisted: true
+    };
+    fs.writeFile(
+        `${process.env.WHITELIST_PATH}${req.metaAuth.recovered}`,
+        JSON.stringify(data),
+        (err) => {}
+    );
+    res.send(data);
+  } else {
+    res.status(500).send();
+  }
+});
+
 app.listen(app.get('port'), function() {
   console.log('OxyFarms microservice is running on port', app.get('port'));
 })

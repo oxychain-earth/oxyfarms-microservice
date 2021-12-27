@@ -62,12 +62,31 @@ class MetaAuth {
 
         cache.set(address, hash);
 
-        return `You are signing a challenge to enter in OxyFarms' whitelist: ${hash}`;
+        const challenge = [{
+            type: 'string',
+            name: 'banner',
+            value: this.options.banner
+        }, {
+            type: 'string',
+            name: 'challenge',
+            value: hash
+        }];
+
+        return JSON.stringify(challenge);
     }
 
     checkChallenge(challenge, sig) {
+        const data = [{
+            type: 'string',
+            name: 'banner',
+            value: this.options.banner
+        }, {
+            type: 'string',
+            name: 'challenge',
+            value: challenge
+        }];
         const recovered = sigUtil.recoverPersonalSignature({
-            data: `You are signing a challenge to enter in OxyFarms' whitelist: ${challenge}`,
+            data: JSON.stringify(data),
             sig
         });
 

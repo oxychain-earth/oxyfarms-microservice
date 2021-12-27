@@ -62,12 +62,12 @@ class MetaAuth {
 
         cache.set(address, hash);
 
-        return `You are signing a challenge to enter in OxyFarms' whitelist: "${hash}"`;
+        return `You are signing a challenge to enter in OxyFarms' whitelist: ${hash}`;
     }
 
     checkChallenge(challenge, sig) {
         const recovered = sigUtil.recoverPersonalSignature({
-            data: `You are signing a challenge to enter in OxyFarms' whitelist: "${hash}"`,
+            data: `You are signing a challenge to enter in OxyFarms' whitelist: ${hash}`,
             sig
         });
 

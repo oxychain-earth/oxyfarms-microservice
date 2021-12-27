@@ -62,31 +62,23 @@ class MetaAuth {
 
         cache.set(address, hash);
 
-        const challenge = [{
-            type: 'string',
-            name: 'banner',
-            value: this.options.banner
-        }, {
-            type: 'string',
-            name: 'challenge',
-            value: hash
-        }];
+        const data = {
+            purpose: "OxyFarms whitelisting process requires the signature of a message to prove you have a valid account: ",
+            challenge: hash
+        }
 
-        return JSON.stringify(challenge);
+        return JSON.stringify(data);
     }
 
     checkChallenge(challenge, sig) {
-        const data = [{
-            type: 'string',
-            name: 'banner',
-            value: this.options.banner
-        }, {
-            type: 'string',
-            name: 'challenge',
-            value: challenge
-        }];
+
+        const data = {
+            purpose: "OxyFarms whitelisting process requires the signature of a message to prove you have a valid account: ",
+            challenge: challenge
+        }
+
         const recovered = sigUtil.recoverPersonalSignature({
-            data: JSON.stringify(data),
+            data: data.purpose + data.challenge,
             sig
         });
 

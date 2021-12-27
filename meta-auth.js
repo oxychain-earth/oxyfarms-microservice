@@ -62,31 +62,12 @@ class MetaAuth {
 
         cache.set(address, hash);
 
-        const challenge = [{
-            type: 'string',
-            name: 'banner',
-            value: this.options.banner
-        }, {
-            type: 'string',
-            name: 'challenge',
-            value: hash
-        }];
-
-        return JSON.stringify(challenge);
+        return `You are signing a message for: "${this.options.banner}", the message is: "${hash}"`;
     }
 
     checkChallenge(challenge, sig) {
-        const data = [{
-            type: 'string',
-            name: 'banner',
-            value: this.options.banner
-        }, {
-            type: 'string',
-            name: 'challenge',
-            value: challenge
-        }];
         const recovered = sigUtil.recoverPersonalSignature({
-            data: JSON.stringify(data),
+            data: `You are signing a message for: "${this.options.banner}", the message is: "${challenge}"`,
             sig
         });
 

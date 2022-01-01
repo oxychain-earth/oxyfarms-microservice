@@ -2,6 +2,8 @@ require('dotenv').config()
 
 const express = require('express');
 const MetaAuth = require("./meta-auth");
+const path = require('path')
+
 const fs = require("fs");
 
 const PORT = process.env.PORT || 7000
@@ -11,6 +13,8 @@ const app = express().set('port', PORT);
 const metaAuth = new MetaAuth({
   banner: process.env.META_BANNER,
 });
+
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -47,7 +51,7 @@ app.get('/token/:token_id', function(req, res) {
 		>NFTree Genesis holders will be given access to governance and participation in the project during the following drop.
 		
 		>**Let's go neutral!**`,
-    'image': `${process.env.IPFS_PATH}/QmNQEKVCwVeL2xVN2SZhbAmMWQt4cq3eR9uwqg4UJZs4CG`,
+    'image': `${process.env.HOST}/oxyfarms-preview.mp4`,
     'external_link': `https://oxyfarms.earth/token/${token_id}`
   }
   res.send(data)

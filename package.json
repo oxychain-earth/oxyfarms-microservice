@@ -20,13 +20,16 @@
   "author": "Leon Acosta <leon@oxychain.earth>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.24.0",
     "dotenv": "^10.0.0",
     "ejs": "^2.6.1",
     "eth-sig-util": "^3.0.1",
+    "ethereum-checksum-address": "^0.0.7",
     "ethereumjs-util": "^7.1.3",
     "express": "^4.16.4",
     "meta-auth": "^1.1.2",
     "node-cache": "^5.1.2",
+    "node-fetch": "^3.1.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

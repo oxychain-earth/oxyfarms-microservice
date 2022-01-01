@@ -47,8 +47,7 @@ app.get('/token/:token_id', function(req, res) {
 		>NFTree Genesis holders will be given access to governance and participation in the project during the following drop.
 		
 		>**Let's go neutral!**`,
-    'image': `${process.env.IPFS_PATH}/QmZqY65SJaJE5E8yXJJ7NjtJSh4bUXuHH8qECBc2WXsQrA`,
-    'animation_url': `${process.env.IPFS_PATH}/QmNQEKVCwVeL2xVN2SZhbAmMWQt4cq3eR9uwqg4UJZs4CG`,
+    'image': `${process.env.IPFS_PATH}/QmNQEKVCwVeL2xVN2SZhbAmMWQt4cq3eR9uwqg4UJZs4CG`,
     'external_link': `https://oxyfarms.earth/token/${token_id}`
   }
   res.send(data)
